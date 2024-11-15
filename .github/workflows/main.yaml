@@ -1,0 +1,13 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    run-on: ubuntu-lates
+    steps:
+      - name: Checkout
+        uses: action/checkout@v2
+        with:
+          build: npm run build
+          start: npm start
