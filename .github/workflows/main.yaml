@@ -1,19 +1,40 @@
-name: Cypress Tests
+name: Run Cypress Tests
+
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  pull_request:
+
 jobs:
-  cypress-run:
+  cypress-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 22
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run Cypress tests
+      - name: Run Cypress Tests
+        run: npm run cypress:run
+
+      # Save artifacts (screenshots/videos)
+      - name: Upload Cypress Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
         with:
-          build: npm run build
-          start: npm start
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos

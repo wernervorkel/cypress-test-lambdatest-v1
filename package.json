@@ -4,8 +4,10 @@
   "main": "index.js",
   "scripts": {
     "build": "echo Builing",
-    "start": "echo Starting"
-  },
+    "start": "echo Starting",
+    "cypress:open": "npx cypress open --config-file=custom/path/to/cypress.config.js",
+    "cypress:run": "npx cypress run --config-file=custom/path/to/cypress.config.js --spec cypress/e2e/example.cy.js",
+  },  
   "keywords": [],
   "author": "",
   "license": "ISC",
