@@ -1,36 +1,44 @@
-name: Run Cypress Tests
+name: Cypress Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
 
 jobs:
-  cypress-tests:
+  cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
-      - name: Checkout code
+      # Step 1: Checkout the repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Node.js
-      - name: Set up Node.js
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 20 # Use a valid Node.js version
 
-      # Install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Run Cypress tests
-      - name: Run Cypress Tests
-        run: npm run cypress:run
+      # Step 4: Build the application (if necessary)
+      - name: Build application
+        run: npm run build
+        if: success()
 
-      # Save artifacts (screenshots/videos)
-      - name: Upload Cypress Artifacts
+      # Step 5: Run Cypress tests using cypress-io action
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start # Starts the application for testing
+          wait-on: http://localhost:3000 # Optional: Ensure the app is ready
+          wait-on-timeout: 120 # Optional: Increase timeout for app startup
+
+      # Step 6: Upload test artifacts if Cypress fails
+      - name: Upload Cypress artifacts
         if: failure()
         uses: actions/upload-artifact@v3
         with:
