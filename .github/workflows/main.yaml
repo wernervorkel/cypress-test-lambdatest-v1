@@ -2,7 +2,7 @@ name: Cypress Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
           start: ""
           wait-on-timeout: 120
           spec: |
-          cypress/e2e/integration/homePage.spec.cy.js
+            cypress/e2e/integration/homePage.spec.cy.js
 
       # Step 6: Upload test artifacts if Cypress fails
       - name: Upload Cypress artifacts
