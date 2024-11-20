@@ -6,7 +6,7 @@
     "build": "echo Builing",
     "start": "echo Starting",
     "cypress:open": "npx cypress open --config-file=custom/path/to/cypress.config.js",
-    "cypress:run": "npx cypress run --config-file=custom/path/to/cypress.config.js --spec cypress/e2e/example.cy.js",
+    "cypress:run": "npx cypress run --config-file=custom/path/to/cypress.config.js"
   },  
   "keywords": [],
   "author": "",
