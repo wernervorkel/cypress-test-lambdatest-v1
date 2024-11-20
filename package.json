@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "echo 'No server to start'",
     "cypress:open": "npx cypress open --config-file cypress.config.js",
     "cypress:run": "npx cypress run --config-file cypress.config.js"
   },

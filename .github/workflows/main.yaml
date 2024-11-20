@@ -33,7 +33,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           config-file: cypress.config.js
-          start: false
+          start: ""
           wait-on-timeout: 120
 
       # Step 6: Upload test artifacts if Cypress fails
