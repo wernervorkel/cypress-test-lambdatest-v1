@@ -35,6 +35,8 @@ jobs:
           config-file: cypress.config.js
           start: ""
           wait-on-timeout: 120
+          spec: |
+          cypress/e2e/integration/homePage.spec.cy.js
 
       # Step 6: Upload test artifacts if Cypress fails
       - name: Upload Cypress artifacts
