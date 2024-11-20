@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "echo Builing",
-    "start": "echo Starting",
-    "cypress:open": "npx cypress open --config-file=custom/path/to/cypress.config.js",
-    "cypress:run": "npx cypress run --config-file=custom/path/to/cypress.config.js"
-  },  
+    "cypress:open": "npx cypress open --config-file cypress.config.js",
+    "cypress:run": "npx cypress run --config-file cypress.config.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
