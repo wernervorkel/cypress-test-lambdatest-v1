@@ -34,7 +34,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           config-file: cypress.config.js
-          start: npm start
+          start: false
           wait-on: https://formy-project.herokuapp.com/ 
           wait-on-timeout: 120
 
